@@ -1,4 +1,4 @@
-name: oneplus13整合
+name: oneplus13t整合
 on:
   workflow_dispatch:
     inputs:
