@@ -175,12 +175,23 @@ jobs:
          ./patch_linux
          mv oImage Image_kpm     
          mv Image_original Image
+         
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Checkout code via SSH
+        run: |
+         ssh -i ~/.ssh/id_ed25519 -T git@github.com || true
 
       - name: Prepare AnyKernel3 Packages
         run: |
          cd kernel_workspace/kernel_platform/dist
-         git clone https://github.com/egcd123/AnyKernel3-ace5Pro.git AnyKernel3-no_kpm --depth=1
-         git clone https://github.com/egcd123/AnyKernel3-ace5Pro.git AnyKernel3-kpm --depth=1
+         git clone git@github.com:egcd123/AnyKernel3-ace5Pro.git AnyKernel3-no_kpm --depth=1
+         git clone git@github.com:egcd123/AnyKernel3-ace5Pro.git AnyKernel3-kpm --depth=1
          rm -rf AnyKernel3-{kpm,no_kpm}/.git
          rm -f AnyKernel3-{kpm,no_kpm}/push.sh
     
