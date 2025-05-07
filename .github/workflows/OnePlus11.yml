@@ -265,11 +265,11 @@ jobs:
       - name: Upload AnyKernel3 (no_KPM)
         uses: actions/upload-artifact@v4
         with:
-         name: AnyKernel3_oneplus_ace3_${{ env.KSUVER }}_no_kpm
+         name: AnyKernel3_oneplus11_${{ env.KSUVER }}_no_kpm
          path: kernel_workspace/kernel_platform/dist/AnyKernel3-no_kpm/*
 
       - name: Upload AnyKernel3 (KPM)
         uses: actions/upload-artifact@v4
         with:
-         name: AnyKernel3_oneplus_ace3_${{ env.KSUVER }}_kpm
+         name: AnyKernel3_oneplus11_${{ env.KSUVER }}_kpm
          path: kernel_workspace/kernel_platform/dist/AnyKernel3-kpm/*
