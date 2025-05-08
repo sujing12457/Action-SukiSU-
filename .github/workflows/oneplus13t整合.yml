@@ -155,7 +155,7 @@ jobs:
       - name: Build kernel
         run: |
          cd kernel_workspace/kernel_platform
-         tools/bazel run --config=fast --config=stamp --lto=thin //common:kernel_aarch64_dist -- --dist_dir=dist
+         sudo bazel build //common:kernel_aarch64_dist --verbose_failures
 
       - name: Generate Kernel lmages
         run: |
